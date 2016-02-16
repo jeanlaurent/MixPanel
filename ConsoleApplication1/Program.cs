@@ -17,12 +17,6 @@ namespace MixPanel
             mixPanel.track("FOURTH");
         }
 
-        public static string Base64Encode(string plainText)
-        {
-            var plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
-        }
-
     }
 
     public class MixPanel
@@ -44,7 +38,7 @@ namespace MixPanel
         private Boolean send(Message message)
         {
             string base64Output = toBase64(toJson(message));
-            System.Diagnostics.Debug.WriteLine(base64Output);
+            //System.Diagnostics.Debug.WriteLine(base64Output);
             WebRequest request = WebRequest.Create("http://api.mixpanel.com/track/?data=" + base64Output);
             HttpWebResponse response = (HttpWebResponse)request.GetResponse();
             response.Close();
